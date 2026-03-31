@@ -1,0 +1,60 @@
+name: Consumables
+options:
+  deploymentTarget:
+    iOS: 17.0
+  xcodeVersion: "16.0"
+settings:
+  base:
+    SWIFT_VERSION: 5.10
+    DEVELOPMENT_TEAM: ""
+    PRODUCT_BUNDLE_IDENTIFIER: com.openclaw.consumables
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 0.1.0
+    IPHONEOS_DEPLOYMENT_TARGET: 17.0
+    TARGETED_DEVICE_FAMILY: 1
+targets:
+  Consumables:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Consumables
+        excludes:
+          - Resources
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_NAME: Consumables
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_CFBundleDisplayName: Consumables
+        CODE_SIGN_STYLE: Automatic
+        ENABLE_PREVIEWS: YES
+  ConsumablesTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: ConsumablesTests
+    dependencies:
+      - target: Consumables
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: $(BUILT_PRODUCTS_DIR)/Consumables.app/Consumables
+schemes:
+  Consumables:
+    build:
+      targets:
+        Consumables: all
+        ConsumablesTests: [test]
+    test:
+      gatherCoverageData: false
+      targets:
+        - name: ConsumablesTests
+    run:
+      config: Debug
