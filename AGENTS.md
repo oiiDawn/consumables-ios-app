@@ -42,6 +42,7 @@ The current implementation supports:
 - Do not edit generated build output or Xcode user-state files.
 - When source membership or build settings change, edit `project.yml`, run `xcodegen generate`, and review the generated project diff.
 - Never claim a build or test passed unless the exact command completed successfully.
+- Keep CI limited to deterministic validation. Signing, archives, releases, and external services require an explicit infrastructure decision.
 
 ## Verification
 

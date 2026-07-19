@@ -50,3 +50,13 @@ xcodebuild test \
 ```
 
 协作约定和仓库结构见 `AGENTS.md`。
+
+## 持续集成
+
+GitHub Actions 会在 pull request 以及推送到 `main` 时执行：
+
+1. 重新生成 Xcode 工程并检查是否存在未提交的工程漂移；
+2. 为 iOS Simulator 构建测试产物；
+3. 运行 XCTest 单元测试。
+
+CI 不执行代码签名、归档、发布或 TestFlight 上传。
