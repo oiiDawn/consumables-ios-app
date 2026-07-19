@@ -300,7 +300,6 @@
 				};
 			};
 			buildConfigurationList = C3C80D6943694F6BA60DDB20 /* Build configuration list for PBXProject "Consumables" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -310,6 +309,7 @@
 			mainGroup = 0F6B6A2F8A43300C8FC3DE65;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
+			productRefGroup = DFC14EE4FFFBEA5ED7BDE606 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

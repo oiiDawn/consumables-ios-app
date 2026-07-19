@@ -24,7 +24,7 @@
 
 ## 开始开发
 
-需要 Xcode 和 [XcodeGen](https://github.com/yonaskolb/XcodeGen)。项目结构以 `project.yml` 为准。
+需要 Xcode 和 [XcodeGen](https://github.com/yonaskolb/XcodeGen)。XcodeGen 版本固定在 `.xcodegen-version`，项目结构以 `project.yml` 为准。
 
 ```sh
 xcodegen generate
@@ -60,3 +60,4 @@ GitHub Actions 会在 pull request 以及推送到 `main` 时执行：
 3. 运行 XCTest 单元测试。
 
 CI 不执行代码签名、归档、发布或 TestFlight 上传。
+CI 会下载 `.xcodegen-version` 指定的官方 XcodeGen release，并在执行前校验下载文件的 SHA-256。

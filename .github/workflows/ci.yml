@@ -26,11 +26,24 @@ jobs:
       - name: Select Xcode 16.4
         run: sudo xcode-select --switch /Applications/Xcode_16.4.app
 
-      - name: Install XcodeGen
-        run: brew install xcodegen
+      - name: Install pinned XcodeGen
+        env:
+          XCODEGEN_SHA256: 090ec29491aad50aec10631bf6e62253fed733c50f3aab0f5ffc86bc170bdbef
+        run: |
+          XCODEGEN_VERSION="$(cat .xcodegen-version)"
+          XCODEGEN_ARCHIVE="$RUNNER_TEMP/xcodegen.zip"
+          XCODEGEN_DIRECTORY="$RUNNER_TEMP/xcodegen"
+
+          curl -fsSL \
+            "https://github.com/yonaskolb/XcodeGen/releases/download/${XCODEGEN_VERSION}/xcodegen.zip" \
+            -o "$XCODEGEN_ARCHIVE"
+          echo "$XCODEGEN_SHA256  $XCODEGEN_ARCHIVE" | shasum -a 256 -c -
+          unzip -q "$XCODEGEN_ARCHIVE" -d "$XCODEGEN_DIRECTORY"
+          echo "$XCODEGEN_DIRECTORY/xcodegen/bin" >> "$GITHUB_PATH"
 
       - name: Verify generated Xcode project
         run: |
+          test "$(xcodegen --version)" = "Version: $(cat .xcodegen-version)"
           xcodegen generate
           git diff --exit-code -- Consumables.xcodeproj
 

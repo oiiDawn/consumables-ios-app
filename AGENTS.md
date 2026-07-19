@@ -16,7 +16,7 @@ The current implementation supports:
 
 - Native SwiftUI app using SwiftData.
 - iOS 17.0 deployment target and Swift 5.10 language mode.
-- XcodeGen is the source of truth for project structure (`project.yml`).
+- XcodeGen is the source of truth for project structure (`project.yml`); use the version declared in `.xcodegen-version`.
 - `Consumables.xcodeproj` is generated, but remains committed for convenient opening.
 - No third-party runtime dependencies are currently used.
 - Production data is stored in the default local SwiftData container. Do not delete or reset it during development or verification.
