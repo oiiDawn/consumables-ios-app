@@ -1,21 +1,40 @@
-# Dependencies
-node_modules/
+# macOS
+.DS_Store
 
-# Environment
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Xcode build products and caches
+DerivedData/
+.build/
+build/
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+# Swift Package Manager
+.swiftpm/
+Package.resolved
+
+# Project-local generated output
+.tmp/
+.artifacts/
+
+# XcodeGen backup files
+*.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+
+# Local configuration and secrets
 .env
 .env.*
 !.env.example
+*.xcconfig.local
 
-# OS
-.DS_Store
-
-# IDE
+# Other editors
 .vscode/
 .idea/
-
-# Build
-dist/
-build/
 
 # Logs
 *.log

@@ -1,19 +1,52 @@
-# Consumables iOS App
+# Consumables
 
-家庭消耗品 iOS App 项目工程。
+一款本地优先的 iOS 家庭消耗品管理 App，用于记录日用品的购买与启用时间，根据手动周期或历史使用间隔预测耗尽日期，并提示近期需要补货的物品。
 
-## Canonical Paths
-- Repo root: `/Users/oii/.openclaw/projects/consumables-ios-app`
-- Shared docs: `/Users/oii/.openclaw/workspace/knowledge/projects/consumables-ios-app/`
-- Discord channel: `#consumables-ios-app`
+## 当前能力
 
-## Current Scope
-- 物品管理（洗发露、牙膏等）
-- 购买/补货记录
-- 使用周期维护
-- 耗尽预测
+- 创建、编辑和归档消耗品
+- 记录购买、启用时间、品牌和数量
+- 为每个物品设置默认使用周期与提前提醒天数
+- 历史不足时使用手动周期，历史充足时按最近三段周期加权预测
+- 按紧急程度展示概览、物品列表和详情
+- 使用 SwiftData 在设备本地持久化
 
-## Suggested Next Steps
-1. 建 iOS SwiftUI + SwiftData skeleton
-2. 落 `openspec` proposal / tasks
-3. 接入 Impeccable 作为 UI 规范与校正
+当前版本尚未包含系统通知、云同步、多人家庭共享、库存数量扣减或账号体系。
+
+## 技术栈
+
+- SwiftUI
+- SwiftData
+- iOS 17+
+- Swift 5.10
+- XcodeGen
+- XCTest
+
+## 开始开发
+
+需要 Xcode 和 [XcodeGen](https://github.com/yonaskolb/XcodeGen)。项目结构以 `project.yml` 为准。
+
+```sh
+xcodegen generate
+open Consumables.xcodeproj
+```
+
+查看可用的 Simulator：
+
+```sh
+xcodebuild -showdestinations \
+  -project Consumables.xcodeproj \
+  -scheme Consumables
+```
+
+运行测试（Simulator 名称可按本机环境调整）：
+
+```sh
+xcodebuild test \
+  -project Consumables.xcodeproj \
+  -scheme Consumables \
+  -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
+  -derivedDataPath .build/DerivedData
+```
+
+协作约定和仓库结构见 `AGENTS.md`。
